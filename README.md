@@ -1,152 +1,123 @@
-guardAIn - NSW Tenant Assistant
-Runner-Up - Elastic/AWS Forge the Future Hackathon
+# guardAIn - NSW Tenant Assistant
 
-Next.jsTypeScriptElasticsearchAWSTailwind CSS
+> A recognised submission for the Elastic/AWS Forge the Future Hackathon
 
-Overview
-guardAIn is an AI-powered tenancy information assistant designed to help New South Wales tenants understand their rights and navigate rental disputes. Built during the Elastic/AWS Forge the Future Hackathon, this application leverages Elasticsearch's Agent Builder with RAG (Retrieval-Augmented Generation) capabilities to provide accurate, contextual legal information to tenants.
+---
 
-The application aims to bridge the gap in accessible tenancy information, offering instant guidance on common rental issues such as rent increases, repair requests, bond disputes, and lease reviews. It maintains clear disclaimers about the informational nature of the service and directs users to qualified legal professionals and NSW Fair Trading for official guidance.
+## Overview
 
-Hackathon Achievement
-This project was recognized as a Runner-Up in the Forge the Future Hackathon, an event sponsored by Elastic and AWS. The challenge focused on leveraging AI and data to solve real-world problems across sectors like public service, finance, and healthcare.
+guardAIn is an AI-powered tenancy information assistant designed to help New South Wales tenants understand their rights and navigate rental disputes. This project was developed as part of the Forge the Future hackathon, an event sponsored by Elastic and AWS that challenged participants to leverage AI and data to solve real-world problems.
 
-Features
-Intelligent Tenancy Assistance
-Lease Review Analysis - Upload and analyze lease documents for potential issues.
-Repair Request Guidance - Step-by-step guidance for urgent repair requests.
-Rent Increase Validation - Check if rent increases comply with NSW regulations.
-Bond Dispute Resolution - Navigate bond return disputes with documented processes.
-Official Document References - Links to NSW Fair Trading resources and forms.
-AI-Powered Reasoning
-Multi-Step Analysis - Visual breakdown of the AI reasoning process.
-Transparent Processing - See how the system analyzes each query.
-Contextual Responses - Conversations maintain context across multiple exchanges.
-Source Attribution - Responses reference applicable NSW tenancy legislation.
-Document Support
-File Attachments - Upload images, PDFs, and documents for analysis.
-Multi-Format Support - Accepts images, PDFs, Word documents, and text files.
-Contextual Integration - Attached files are analyzed alongside user queries.
-Conversation Management
-Multi-Turn Dialogues - Maintain conversation context for complex queries.
-Recent Cases Sidebar - Quick access to previous conversations.
-New Chat Functionality - Start fresh conversations with a single click.
-Architecture
-┌─────────────────────────────────────────────────────────────────┐
-│ Frontend (Next.js) │
-│ ┌─────────────┐ ┌─────────────┐ ┌─────────────────────────┐ │
-│ │ React UI │ │ Tailwind │ │ shadcn/ui Components │ │
-│ │ (TypeScript)│ │ CSS │ │ │ │
-│ └─────────────┘ └─────────────┘ └─────────────────────────┘ │
-└─────────────────────────────────────────────────────────────────┘
-│
-▼
-┌─────────────────────────────────────────────────────────────────┐
-│ Backend API (Next.js Routes) │
-│ ┌─────────────────────────────────────────────────────────────┐│
-│ │ /api/chat Endpoint ││
-│ │ • Request validation ││
-│ │ • Conversation management ││
-│ │ • Response formatting ││
-│ └─────────────────────────────────────────────────────────────┘│
-└─────────────────────────────────────────────────────────────────┘
-│
-▼
-┌─────────────────────────────────────────────────────────────────┐
-│ Elasticsearch Agent Builder (RAG) │
-│ ┌─────────────┐ ┌─────────────┐ ┌─────────────────────────┐ │
-│ │ Vector │ │ NSW │ │ AI Reasoning │ │
-│ │ Search │ │ Tenancy │ │ Engine │ │
-│ │ │ │ Knowledge │ │ │ │
-│ └─────────────┘ └─────────────┘ └─────────────────────────┘ │
-└─────────────────────────────────────────────────────────────────┘
-│
-▼
-┌─────────────────────────────────────────────────────────────────┐
-│ Database (Prisma + SQLite) │
-│ ┌─────────────┐ ┌─────────────┐ │
-│ │ Users │ │ Posts │ │
-│ └─────────────┘ └─────────────┘ │
-└─────────────────────────────────────────────────────────────────┘
+The application uses Elasticsearch's Agent Builder with RAG (Retrieval-Augmented Generation) capabilities to provide contextual information about NSW tenancy legislation. It offers guidance on common rental issues such as rent increases, repair requests, bond disputes, and lease reviews.
 
-text
+**Important Disclaimer:** This system provides information for reference purposes only. It is not a substitute for professional legal advice. Users should consult qualified legal professionals for specific legal matters and contact NSW Fair Trading for official guidance.
 
+---
+
+## Features
+
+### Intelligent Tenancy Assistance
+- Lease review analysis and guidance
+- Repair request walkthroughs
+- Rent increase validation against NSW regulations
+- Bond dispute information
+- References to NSW Fair Trading resources
+
+### AI-Powered Reasoning
+- Multi-step analysis with visual breakdown
+- Transparent processing pipeline
+- Multi-turn conversation support
+- References to applicable legislation
+
+### Document Support
+- File attachment capability (images, PDFs, documents)
+- Contextual integration with user queries
+
+### Conversation Management
+- Conversation history tracking
+- Recent cases sidebar for quick access
+- New chat functionality
+
+---
+
+## Architecture
+
+```
+Frontend (Next.js + React)
+         |
+         v
+Backend API (/api/chat endpoint)
+         |
+         v
+Elasticsearch Agent Builder (RAG)
+         |
+         v
+Database (Prisma + SQLite)
+```
 
 ---
 
 ## Tech Stack
 
 ### Frontend
-| Technology | Purpose |
-|------------|---------|
-| **Next.js 16** | React framework with App Router |
-| **TypeScript** | Type-safe development |
-| **Tailwind CSS 4** | Utility-first styling |
-| **shadcn/ui** | Accessible UI components |
-| **Radix UI** | Headless component primitives |
-| **Framer Motion** | Animation library |
-| **React Hook Form** | Form state management |
-| **Zod** | Schema validation |
+- Next.js 16 (App Router)
+- TypeScript
+- Tailwind CSS 4
+- shadcn/ui components
+- Radix UI primitives
+- Framer Motion
 
 ### Backend
-| Technology | Purpose |
-|------------|---------|
-| **Next.js API Routes** | Serverless API endpoints |
-| **Prisma** | Database ORM |
-| **SQLite** | Development database |
-| **z-ai-web-dev-sdk** | AI integration SDK |
+- Next.js API Routes
+- Prisma ORM
+- SQLite
 
 ### AI & Infrastructure
-| Technology | Purpose |
-|------------|---------|
-| **Elasticsearch Agent Builder** | RAG-powered AI assistant |
-| **Elastic Cloud** | Managed Elasticsearch hosting |
-| **AWS** | Cloud infrastructure |
-| **Caddy** | Reverse proxy server |
+- Elasticsearch Agent Builder
+- Elastic Cloud
+- AWS infrastructure
+- Caddy reverse proxy
 
 ---
 
 ## Project Structure
 
+```
 AWS-Elastic-Hackathon/
 ├── Pitch Deck/
-│ └── guardAIn Pitch Deck v3.pptx
+│   └── guardAIn Pitch Deck v3.pptx
 ├── src/
-│ ├── app/
-│ │ ├── api/
-│ │ │ ├── chat/
-│ │ │ │ └── route.ts
-│ │ │ └── route.ts
-│ │ ├── page.tsx
-│ │ └── styles.css
-│ ├── components/
-│ │ └── ui/
-│ ├── hooks/
-│ └── lib/
+│   ├── app/
+│   │   ├── api/
+│   │   │   ├── chat/
+│   │   │   │   └── route.ts
+│   │   │   └── route.ts
+│   │   ├── page.tsx
+│   │   └── styles.css
+│   ├── components/
+│   │   └── ui/
+│   ├── hooks/
+│   └── lib/
 ├── prisma/
-│ └── schema.prisma
+│   └── schema.prisma
 ├── public/
-├── db/
 ├── package.json
 ├── tailwind.config.ts
-└── tsconfig.json
-
-text
-
+├── tsconfig.json
+└── Caddyfile
+```
 
 ---
 
 ## Getting Started
 
 ### Prerequisites
-
-- **Node.js** >= 18.x or **Bun** runtime
-- **Elasticsearch Cloud Account** with Agent Builder enabled
-- **AWS Account** (optional for deployment)
+- Node.js 18.x or Bun runtime
+- Elasticsearch Cloud account with Agent Builder enabled
 
 ### Environment Variables
 
-Create a `.env` file in the root directory:
+Create a `.env` file:
 
 ```env
 # Elasticsearch Configuration
@@ -156,125 +127,111 @@ ELASTIC_AGENT_ID=your_agent_id
 
 # Database
 DATABASE_URL="file:./dev.db"
-Installation
-bash
+```
 
+### Installation
+
+```bash
 # Clone the repository
 git clone https://github.com/AakarshanManiGiri/AWS-Elastic-Hackathon.git
 cd AWS-Elastic-Hackathon
 
-# Install dependencies (using Bun)
+# Install dependencies
 bun install
 
-# Generate Prisma client
+# Setup database
 bun run db:generate
-
-# Push database schema
 bun run db:push
 
 # Start development server
 bun run dev
-Development
-bash
+```
 
-# Run development server
-bun run dev
+---
 
-# Run linting
-bun run lint
+## API Reference
 
-# Build for production
-bun run build
+### POST /api/chat
 
-# Start production server
-bun run start
-API Reference
-POST /api/chat
-Send a message to the guardAIn assistant.
+Send a message to the assistant.
 
-Request Body:
-
-typescript
-
-interface ChatRequest {
-  message: string;                    // User's query
-  attachedFile?: {
-    name: string;                     // File name
-    type: string;                     // MIME type
-    data: string;                     // Base64 encoded data
-  };
-  conversationId?: string;            // For multi-turn conversations
+**Request:**
+```json
+{
+  "message": "string",
+  "attachedFile": {
+    "name": "string",
+    "type": "string",
+    "data": "string (base64)"
+  },
+  "conversationId": "string (optional)"
 }
-Response:
+```
 
-typescript
-
-interface ChatResponse {
-  response: string;                   // HTML-formatted AI response
-  reasoning: string[];                // Array of reasoning steps
-  conversationId: string;             // Conversation identifier
+**Response:**
+```json
+{
+  "response": "string (HTML-formatted)",
+  "reasoning": ["string"],
+  "conversationId": "string"
 }
-Example:
+```
 
-bash
+---
 
-curl -X POST http://localhost:3000/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{
-    "message": "My landlord wants to increase rent by 15%. Is this legal?"
-  }'
-Use Cases
-1. Rent Increase Queries
-User: "My landlord wants to increase my rent by $50 per week. What are my rights in NSW?"
+## Example Use Cases
 
-guardAIn: Analyzes NSW tenancy law and provides:
+### Rent Increase Queries
+Users can ask about rent increase regulations and receive information about notice periods, frequency limits, and dispute resolution options.
 
-Legal notice period requirements
-Maximum increase frequency
-Dispute resolution options
-Relevant NSW Fair Trading links
-2. Repair Request Assistance
-User: "My hot water system has been broken for 2 weeks. What can I do?"
+### Repair Request Assistance
+The system provides step-by-step guidance for urgent repair situations, including notification requirements and timeframes.
 
-guardAIn: Provides step-by-step guidance:
+### Bond Dispute Information
+Users can upload inspection reports and receive information about fair wear and tear versus damage, cleaning standards, and dispute processes.
 
-Urgent repair classification
-Notification requirements
-Timeframes for landlord response
-Tribunal application process
-3. Bond Dispute Resolution
-User: [Uploads final inspection report] "My landlord is claiming $800 for cleaning. Is this fair?"
+---
 
-guardAIn: Reviews document and advises:
+## Privacy and Disclaimer
 
-Fair wear and tear vs damage
-Cleaning standard expectations
-Dispute resolution steps
-NCAT application process
-Privacy & Disclaimer
-Important Notice
-guardAIn provides information for reference purposes only. This system is not a substitute for professional legal advice.
+**This system provides information for reference purposes only.**
 
-Consult a qualified legal professional for specific legal advice.
-Contact NSW Fair Trading for official guidance: 13 32 20.
-NSW Civil and Administrative Tribunal (NCAT) for dispute resolution.
-Data Handling
-User queries are processed through Elasticsearch Agent Builder.
-Conversation data may be stored for service improvement.
-File attachments are processed temporarily and not permanently stored.
-Future Roadmap
- Voice Interface - Speech-to-text for accessibility.
- Multi-Language Support - Translations for non-English speakers.
- Document Generation - Auto-generate formal letters and notices.
- Integration APIs - Connect with NSW Fair Trading systems.
- Mobile App - Native iOS/Android applications.
-Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
+- Consult a qualified legal professional for specific legal advice
+- Contact NSW Fair Trading (13 32 20) for official guidance
+- NSW Civil and Administrative Tribunal (NCAT) handles dispute resolution
 
-Fork the repository
-Create your feature branch (git checkout -b feature/AmazingFeature)
-Commit your changes (git commit -m 'Add some AmazingFeature')
-Push to the branch (git push origin feature/AmazingFeature)
-Open a Pull Request
-License
-This project is open source and available under the MIT License.
+---
+
+## About the Hackathon
+
+The Forge the Future hackathon is sponsored by Elastic and AWS, challenging participants to develop AI-powered solutions across sectors including banking, healthcare, ecommerce, and public services.
+
+This project was developed as a learning experience to explore:
+- RAG (Retrieval-Augmented Generation) implementation
+- Elasticsearch Agent Builder integration
+- Real-world application of AI in legal information access
+
+---
+
+## Future Improvements
+
+Potential areas for future development:
+- Voice interface for accessibility
+- Multi-language support
+- Document generation for formal notices
+- Integration with NSW Fair Trading APIs
+- Mobile application
+
+---
+
+## License
+
+This project is available under the MIT License.
+
+---
+
+## Contact
+
+**Maintainer:** Aakarshan Mani Giri
+**GitHub:** [@AakarshanManiGiri](https://github.com/AakarshanManiGiri)
+**Repository:** [AWS-Elastic-Hackathon](https://github.com/AakarshanManiGiri/AWS-Elastic-Hackathon)
